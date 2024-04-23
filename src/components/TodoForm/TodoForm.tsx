@@ -1,4 +1,6 @@
-import { ReactNode } from "react";
+import { TodoButton } from "./TodoButton";
+import { TodoHeader } from "./TodoHeader";
+import { TodoInput } from "./TodoInput";
 
 export default function TodoForm() {
   return (
@@ -21,40 +23,4 @@ export default function TodoForm() {
       </form>
     </>
   );
-}
-
-interface ITodoInput {
-  placeholder: string;
-  required?: boolean;
-}
-
-function TodoInput({ placeholder, required = false }: ITodoInput) {
-  return <input type="text" placeholder={placeholder} required={required} />;
-}
-
-interface ITodoButton {
-  type: "submit" | "reset";
-  "aria-label"?: string;
-
-  children: ReactNode;
-}
-
-function TodoButton({ children, type, "aria-label": ariaLabel }: ITodoButton) {
-  return (
-    <button type={type} aria-label={ariaLabel}>
-      {children}
-    </button>
-  );
-}
-
-interface ITodoHeader {
-  children: ReactNode;
-
-  as: "h1" | "h2" | "h3";
-}
-
-function TodoHeader({ children, as = "h1" }: ITodoHeader) {
-  const HeaderTag = as;
-
-  return <HeaderTag>{children}</HeaderTag>;
 }
