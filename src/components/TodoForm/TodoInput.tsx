@@ -1,26 +1,11 @@
-import { FormEvent, useState } from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 
-interface ITodoInput {
+interface ITodoInput extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
-  name: string;
-  required?: boolean;
 }
 
-export function TodoInput({ placeholder, name, required = false }: ITodoInput) {
-  const [value, setValue] = useState("");
-
-  function handleInput(e: FormEvent<HTMLInputElement>) {
-    setValue((e.target as HTMLInputElement).value);
+export const TodoInput = forwardRef<HTMLInputElement, ITodoInput>(
+  ({ placeholder, ...props }, ref) => {
+    return <input {...props} placeholder={placeholder} ref={ref} />;
   }
-
-  return (
-    <input
-      type="text"
-      onInput={handleInput}
-      placeholder={placeholder}
-      name={name}
-      required={required}
-      value={value}
-    />
-  );
-}
+);
