@@ -18,17 +18,25 @@ export const todosSlice = createSlice({
   reducers: {
     addTodo: (state, action: PayloadAction<IPayloadAction>) => {
       const date = Date.now();
-      state.push({
-        header: action.payload.header,
-        description: action.payload.description,
+      const newTodo = {
         date,
         id: date.toString(),
-      });
+        completed: false,
+
+        header: action.payload.header,
+        description: action.payload.description,
+      };
+
+      state.push(newTodo);
+    },
+    toggleTodo: (state, action) => {
+      const todo = state.find((todo) => todo.id === action.payload.id);
+      if (todo) todo.completed = !todo.completed;
     },
   },
 });
 
-export const { addTodo } = todosSlice.actions;
+export const { addTodo, toggleTodo } = todosSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const getTodos = (state: RootState) => state.todos;
