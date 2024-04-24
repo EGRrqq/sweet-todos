@@ -13,7 +13,7 @@ export const TodoForm = () => {
   const headerValue = watch("header");
 
   return (
-    <Form onFinish={handleSubmit(onSubmit)}>
+    <Form onFinish={handleSubmit(onSubmit)} style={{ outline: "solid" }}>
       <h1>Todo Form</h1>
 
       <Form.Item name="header">
