@@ -1,4 +1,4 @@
-import TodoForm from "./components/TodoForm/TodoForm";
+import TodoForm from "./components/TodoForm";
 import { getTodos } from "./redux/features/todosSlice";
 import { useAppSelector } from "./redux/hooks";
 
