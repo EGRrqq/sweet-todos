@@ -5,10 +5,13 @@ import { useAppDispatch } from "../redux/hooks";
 import { addTodo } from "../redux/features/todosSlice";
 
 export const TodoForm = () => {
-  const { control, handleSubmit, watch } = useForm<ITodo>();
+  const { control, handleSubmit, watch, reset } = useForm<ITodo>();
 
   const dispatch = useAppDispatch();
-  const onSubmit: SubmitHandler<ITodo> = (data) => dispatch(addTodo(data));
+  const onSubmit: SubmitHandler<ITodo> = (data) => {
+    dispatch(addTodo(data));
+    reset();
+  };
 
   const headerValue = watch("header");
 
