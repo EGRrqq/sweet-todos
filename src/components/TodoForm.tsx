@@ -30,7 +30,7 @@ const TodoForm = () => {
       </Form.Item>
 
       <Form.Item name="description">
-        <div>
+        <span>
           <Controller
             name="description"
             control={control}
@@ -39,7 +39,7 @@ const TodoForm = () => {
               <Input id="description" placeholder="Description" {...field} />
             )}
           />
-        </div>
+        </span>
       </Form.Item>
 
       <Form.Item>
