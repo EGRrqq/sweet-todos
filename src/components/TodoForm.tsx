@@ -4,7 +4,7 @@ import { ITodo } from "../types";
 import { useAppDispatch } from "../redux/hooks";
 import { addTodo } from "../redux/features/todosSlice";
 
-const TodoForm = () => {
+export const TodoForm = () => {
   const { control, handleSubmit, watch } = useForm<ITodo>();
 
   const dispatch = useAppDispatch();
@@ -50,5 +50,3 @@ const TodoForm = () => {
     </Form>
   );
 };
-
-export default TodoForm;
