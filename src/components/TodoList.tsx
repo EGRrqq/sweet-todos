@@ -1,4 +1,4 @@
-import { List, Checkbox, Button } from "antd";
+import { List, Checkbox, Button, Input } from "antd";
 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import {
@@ -28,6 +28,7 @@ export const TodoList = () => {
           ]}
           style={{
             background: "rgba(0,0,0,0.05)",
+            alignItems: "start",
           }}
         >
           <List.Item.Meta
@@ -38,32 +39,35 @@ export const TodoList = () => {
               />
             }
             title={
-              <textarea
+              <Input.TextArea
                 value={todo.header}
-                onInput={(e) => {
+                minLength={1}
+                autoSize={{ minRows: 1, maxRows: 10 }}
+                placeholder="Task name"
+                onChange={(e) => {
                   dispatch(
                     setHeader({
                       id: todo.id,
-                      header: (e.target as HTMLTextAreaElement).value,
+                      header: e.target.value,
                     })
                   );
                 }}
               />
             }
             description={
-              todo.description && (
-                <textarea
-                  value={todo.description}
-                  onInput={(e) => {
-                    dispatch(
-                      setDescription({
-                        id: todo.id,
-                        description: (e.target as HTMLTextAreaElement).value,
-                      })
-                    );
-                  }}
-                />
-              )
+              <Input.TextArea
+                value={todo.description}
+                placeholder="Description"
+                autoSize={{ minRows: 1, maxRows: 10 }}
+                onChange={(e) => {
+                  dispatch(
+                    setDescription({
+                      id: todo.id,
+                      description: e.target.value,
+                    })
+                  );
+                }}
+              />
             }
           />
         </List.Item>
