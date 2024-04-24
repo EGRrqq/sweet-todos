@@ -9,7 +9,7 @@ interface ITodoTextarea {
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export const TodoTextarea = ({
+export const TodoTextArea = ({
   name,
   placeholder,
   value,

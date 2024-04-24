@@ -9,7 +9,7 @@ import {
 } from "../../redux/features/todosSlice";
 import { useEffect, useState } from "react";
 import { ITodo } from "../../types";
-import { TodoTextarea } from "./TodoTextarea";
+import { TodoTextArea } from "./TodoTextarea";
 
 interface ITodoItems {
   todo: ITodo;
@@ -50,7 +50,7 @@ export const TodoItem = ({ todo }: ITodoItems) => {
           />
         }
         title={
-          <TodoTextarea
+          <TodoTextArea
             name="header text area"
             placeholder="Task name"
             value={todo.header}
@@ -65,7 +65,7 @@ export const TodoItem = ({ todo }: ITodoItems) => {
           />
         }
         description={
-          <TodoTextarea
+          <TodoTextArea
             name="description text area"
             placeholder="Description"
             value={todo.description || ""}
