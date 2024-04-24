@@ -1,7 +1,13 @@
 import { List, Checkbox, Button } from "antd";
 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { getTodos, toggleTodo, removeTodo } from "../redux/features/todosSlice";
+import {
+  getTodos,
+  toggleTodo,
+  removeTodo,
+  setHeader,
+  setDescription,
+} from "../redux/features/todosSlice";
 
 export const TodoList = () => {
   const todos = useAppSelector(getTodos);
@@ -31,8 +37,34 @@ export const TodoList = () => {
                 onChange={() => dispatch(toggleTodo(todo))}
               />
             }
-            title={<span>{todo.header}</span>}
-            description={todo.description && <p>{todo.description}</p>}
+            title={
+              <textarea
+                value={todo.header}
+                onInput={(e) => {
+                  dispatch(
+                    setHeader({
+                      id: todo.id,
+                      header: (e.target as HTMLTextAreaElement).value,
+                    })
+                  );
+                }}
+              />
+            }
+            description={
+              todo.description && (
+                <textarea
+                  value={todo.description}
+                  onInput={(e) => {
+                    dispatch(
+                      setDescription({
+                        id: todo.id,
+                        description: (e.target as HTMLTextAreaElement).value,
+                      })
+                    );
+                  }}
+                />
+              )
+            }
           />
         </List.Item>
       )}
