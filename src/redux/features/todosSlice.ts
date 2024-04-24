@@ -33,10 +33,16 @@ export const todosSlice = createSlice({
       const todo = state.find((todo) => todo.id === action.payload.id);
       if (todo) todo.completed = !todo.completed;
     },
+    removeTodo: (state, action) => {
+      const todoIndex = state.findIndex(
+        (todo) => todo.id === action.payload.id
+      );
+      if (todoIndex !== -1) state.splice(todoIndex, 1);
+    },
   },
 });
 
-export const { addTodo, toggleTodo } = todosSlice.actions;
+export const { addTodo, toggleTodo, removeTodo } = todosSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const getTodos = (state: RootState) => state.todos;

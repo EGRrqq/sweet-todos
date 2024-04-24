@@ -1,6 +1,6 @@
 import "./App.css";
 import TodoForm from "./components/TodoForm";
-import { getTodos, toggleTodo } from "./redux/features/todosSlice";
+import { getTodos, toggleTodo, removeTodo } from "./redux/features/todosSlice";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 
 function App() {
@@ -31,6 +31,8 @@ function App() {
               ) : (
                 <></>
               )}
+
+              <button onClick={() => dispatch(removeTodo(i))}>-</button>
             </label>
           </li>
         ))}
