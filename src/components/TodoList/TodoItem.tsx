@@ -5,7 +5,6 @@ import {
   toggleTodo,
   removeTodo,
   setHeader,
-  setDescription,
 } from "../../redux/features/todosSlice";
 import { useEffect, useState } from "react";
 import { ITodo } from "../../types";
@@ -35,20 +34,25 @@ export const TodoItem = ({ todo }: ITodoItems) => {
     <List.Item
       actions={[<Button onClick={() => dispatch(removeTodo(todo))}>-</Button>]}
       style={{
+        // rgb(24 149 0)
+        // #ff8888
         background: "rgba(0,0,0,0.05)",
+        boxShadow: "0.05rem 0.05rem black",
+        border: "solid 0.05rem black",
         alignItems: "start",
       }}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
     >
       <List.Item.Meta
-        avatar={
-          <Checkbox
-            name="todo completed status"
-            checked={todo.completed}
-            onChange={() => dispatch(toggleTodo(todo))}
-          />
-        }
+        style={{ alignItems: "center" }}
+        // avatar={
+        //   <Checkbox
+        //     name="todo completed status"
+        //     checked={todo.completed}
+        //     onChange={() => dispatch(toggleTodo(todo))}
+        //   />
+        // }
         title={
           <TodoTextArea
             name="header text area"
@@ -59,21 +63,6 @@ export const TodoItem = ({ todo }: ITodoItems) => {
                 setHeader({
                   id: todo.id,
                   header: e.target.value,
-                })
-              );
-            }}
-          />
-        }
-        description={
-          <TodoTextArea
-            name="description text area"
-            placeholder="Description"
-            value={todo.description || ""}
-            onChange={(e) => {
-              dispatch(
-                setDescription({
-                  id: todo.id,
-                  description: e.target.value,
                 })
               );
             }}

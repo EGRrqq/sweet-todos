@@ -8,14 +8,6 @@ export const TodoList = () => {
   const todos = useAppSelector(getTodos);
 
   return (
-    <List
-      dataSource={todos}
-      style={{
-        display: "grid",
-        gap: "1rem",
-        outline: "solid",
-      }}
-      renderItem={(todo) => <TodoItem todo={todo} />}
-    />
+    <List dataSource={todos} renderItem={(todo) => <TodoItem todo={todo} />} />
   );
 };

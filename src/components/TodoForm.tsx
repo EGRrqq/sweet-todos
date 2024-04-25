@@ -16,10 +16,20 @@ export const TodoForm = () => {
   const headerValue = watch("header");
 
   return (
-    <Form onFinish={handleSubmit(onSubmit)} style={{ outline: "solid" }}>
-      <h1>Todo Form</h1>
-
-      <Form.Item name="header">
+    <Form
+      onFinish={handleSubmit(onSubmit)}
+      layout="inline"
+      style={{
+        boxShadow: "0.05rem 0.05rem black",
+        border: "solid 0.05rem black",
+      }}
+    >
+      <Form.Item
+        name="header"
+        style={{
+          flex: "1",
+        }}
+      >
         <span>
           <Controller
             name="header"
@@ -27,19 +37,6 @@ export const TodoForm = () => {
             rules={{ required: true, minLength: 1 }}
             render={({ field }) => (
               <Input id="header" placeholder="Task name" {...field} />
-            )}
-          />
-        </span>
-      </Form.Item>
-
-      <Form.Item name="description">
-        <span>
-          <Controller
-            name="description"
-            control={control}
-            rules={{ minLength: 1 }}
-            render={({ field }) => (
-              <Input id="description" placeholder="Description" {...field} />
             )}
           />
         </span>
