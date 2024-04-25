@@ -1,4 +1,23 @@
+:root {
+  --border-width: 0.05rem;
+}
+
 li {
   list-style: none;
   padding: 0 !important;
+}
+
+button:focus-visible {
+  outline: 0 !important;
+  border-color: #1677ff !important;
+}
+.ant-btn-primary:focus-visible {
+  border-color: #cae1ff !important;
+}
+
+button:focus-visible,
+input:focus,
+input,
+textarea {
+  border-width: var(--border-width) !important;
 }

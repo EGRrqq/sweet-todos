@@ -1,4 +1,3 @@
-import "./TodoItem.css";
 import { List, Button } from "antd";
 
 import { useAppDispatch } from "../../redux/hooks";
@@ -25,8 +24,6 @@ export const TodoItem = ({ todo }: ITodoItems) => {
   return (
     <List.Item
       style={{
-        // rgb(24 149 0)
-        // #ff8888
         boxShadow: "0.05rem 0.05rem black",
         border: "solid 0.05rem black",
         alignItems: "start",
