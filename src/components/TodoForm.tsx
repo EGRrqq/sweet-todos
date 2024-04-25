@@ -27,7 +27,7 @@ export const TodoForm = () => {
       <Form.Item
         name="header"
         style={{
-          flex: "1",
+          flex: 999,
         }}
       >
         <span>
@@ -42,9 +42,14 @@ export const TodoForm = () => {
         </span>
       </Form.Item>
 
-      <Form.Item>
-        <Button disabled={!headerValue} type="primary" htmlType="submit">
-          Add Todo
+      <Form.Item style={{ flex: 1 }}>
+        <Button
+          style={{ width: "100%", minWidth: "2rem" }}
+          disabled={!headerValue}
+          type="primary"
+          htmlType="submit"
+        >
+          +
         </Button>
       </Form.Item>
     </Form>

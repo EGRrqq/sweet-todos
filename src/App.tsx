@@ -15,13 +15,13 @@ function App() {
       </Header>
 
       <Layout>
-        <Content>
+        <Content style={{ background: colorBgContainer }}>
           <Flex gap="middle" vertical>
             <TodoForm />
             <TodoList />
           </Flex>
         </Content>
-        <Drawer title="Basic Drawer" placement="right" footer="Footer" open>
+        <Drawer title="Basic Drawer" placement="right" footer="Footer">
           <p>Some contents...</p>
           <p>Some contents...</p>
           <p>Some contents...</p>

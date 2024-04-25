@@ -1,11 +1,8 @@
-import { List, Checkbox, Button } from "antd";
+import "./TodoItem.css";
+import { List, Button } from "antd";
 
 import { useAppDispatch } from "../../redux/hooks";
-import {
-  toggleTodo,
-  removeTodo,
-  setHeader,
-} from "../../redux/features/todosSlice";
+import { removeTodo, setHeader } from "../../redux/features/todosSlice";
 import { useEffect, useState } from "react";
 import { ITodo } from "../../types";
 import { TodoTextArea } from "./TodoTextarea";
@@ -19,6 +16,7 @@ export const TodoItem = ({ todo }: ITodoItems) => {
   const [initialFocusState, setInitialFocusState] = useState(false);
 
   const dispatch = useAppDispatch();
+  console.log(isFocused);
 
   useEffect(() => {
     setInitialFocusState(isFocused);
@@ -32,27 +30,28 @@ export const TodoItem = ({ todo }: ITodoItems) => {
 
   return (
     <List.Item
-      actions={[<Button onClick={() => dispatch(removeTodo(todo))}>-</Button>]}
       style={{
         // rgb(24 149 0)
         // #ff8888
-        background: "rgba(0,0,0,0.05)",
         boxShadow: "0.05rem 0.05rem black",
         border: "solid 0.05rem black",
         alignItems: "start",
       }}
+      actions={[
+        <Button
+          style={{
+            minWidth: "2rem",
+          }}
+          onClick={() => dispatch(removeTodo(todo))}
+        >
+          -
+        </Button>,
+      ]}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
     >
       <List.Item.Meta
-        style={{ alignItems: "center" }}
-        // avatar={
-        //   <Checkbox
-        //     name="todo completed status"
-        //     checked={todo.completed}
-        //     onChange={() => dispatch(toggleTodo(todo))}
-        //   />
-        // }
+        style={{ alignItems: "center", padding: 0 }}
         title={
           <TodoTextArea
             name="header text area"
