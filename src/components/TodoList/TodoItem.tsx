@@ -3,30 +3,24 @@ import { List, Button } from "antd";
 
 import { useAppDispatch } from "../../redux/hooks";
 import { removeTodo, setHeader } from "../../redux/features/todosSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ITodo } from "../../types";
 import { TodoTextArea } from "./TodoTextarea";
+import { useTodoFocus } from "../../hooks";
 
 interface ITodoItems {
   todo: ITodo;
 }
 
 export const TodoItem = ({ todo }: ITodoItems) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const [initialFocusState, setInitialFocusState] = useState(false);
-
+  const { isFocused, handleFocus, handleBlur, isRemovable } = useTodoFocus();
   const dispatch = useAppDispatch();
-  console.log(isFocused);
 
   useEffect(() => {
-    setInitialFocusState(isFocused);
-  }, [isFocused]);
-
-  useEffect(() => {
-    if (!isFocused && !todo.header && !initialFocusState) {
+    if (isRemovable && !todo.header) {
       dispatch(removeTodo({ id: todo.id }));
     }
-  }, [isFocused, dispatch, todo.header, todo.id, initialFocusState]);
+  }, [isRemovable, dispatch, todo.header, todo.id]);
 
   return (
     <List.Item
@@ -47,8 +41,8 @@ export const TodoItem = ({ todo }: ITodoItems) => {
           -
         </Button>,
       ]}
-      onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
     >
       <List.Item.Meta
         style={{ alignItems: "center", padding: 0 }}
